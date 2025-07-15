@@ -21,18 +21,5 @@ Ele integra:
 
 ## 🗂️ Estrutura do Projeto
 
-estimatron/
-|
-├── main.py # Interface Streamlit com entrada manual ou via config.json 
-|
-├── config.json # Parâmetros de entrada opcional
-|
-├── arquivos/ # Diretório dos arquivos de entrada 
-│ ├── modelo_uml.xml 
-│ └── modelo.xsd
-|
-├── modules/ # Módulos funcionais do sistema 
-│ ├── parser_xml.py # Analisa UML/Draw.io (XML) e calcula LOC 
-│ ├── parser_xsd.py # Analisa XSD e gera fator de ajuste (EAF) 
-│ └── cocomo_model.py # Aplica o modelo COCOMO II
+estimatron/ ├── main.py # Interface Streamlit com entrada manual ou via config.json ├── config.json # Parâmetros de entrada opcional ├── arquivos/ # Diretório dos arquivos de entrada │ ├── modelo_uml.xml │ └── modelo.xsd ├── modules/ # Módulos funcionais do sistema │ ├── parser_xml.py # Analisa UML/Draw.io (XML) e calcula LOC │ ├── parser_xsd.py # Analisa XSD e gera fator de ajuste (EAF) │ └── cocomo_model.py # Aplica o modelo COCOMO II
 
