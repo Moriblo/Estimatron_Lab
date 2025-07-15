@@ -1,4 +1,4 @@
-# 🤖 Estimatron [![Estimatron](https://img.shields.io/badge/Estimatron-Model%20Driven%20Estimator-purple)](https://github.com/seu-usuario/estimatron)
+# 🤖 Estimatron [![Estimatron](https://img.shields.io/badge/Estimatron-Model%20Driven%20Estimator-purple)](https://github.com/moriblo/estimatron)
 
 ![Status](https://img.shields.io/badge/project-active-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
