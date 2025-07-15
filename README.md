@@ -11,7 +11,7 @@
 
 ## 📘 Visão Geral
 
-O **Estimatron** nasceu como uma PoC (Prova de Conceito) para demonstrar como é possível automatizar estimativas de projetos de software com base em artefatos técnicos gerados desde a modelagem inicial (UML no Draw.io) até os esquemas de dados (XSD).
+O **Estimatron** é uma PoC que automatiza estimativas de esforço, prazo e custo de software com base em artefatos técnicos como modelos UML (XML do Draw.io) e esquemas XSD. Ele utiliza COCOMO II para gerar projeções realistas, com visualização simplificada e amigável.
 
 Ele integra:
 
@@ -24,7 +24,18 @@ Ele integra:
 
 ---
 
-## 🗂️ Estrutura do Projeto
+## 🗂️ Estrutura de Diretórios
 
+```text
+🤖 estimatron/
+├── 🎛️ main.py             # Interface Streamlit com entrada manual ou via config.json
+├── ⚙️ config.json         # Parâmetros de entrada opcional
+├── 📂 arquivos/           # Diretório dos arquivos de entrada
+│   ├── 📄 modelo_uml.xml
+│   └── 📄 modelo.xsd
+├── 🧩 modules/            # Módulos funcionais do sistema
+│   ├── 🧮 parser_xml.py   # Analisa UML/Draw.io (XML) e calcula LOC
+│   ├── 📐 parser_xsd.py   # Analisa XSD e gera fator de ajuste (EAF)
+│   └── 🧠 cocomo_model.py # Aplica o modelo COCOMO II
 
 
