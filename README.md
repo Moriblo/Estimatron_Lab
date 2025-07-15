@@ -37,5 +37,15 @@ Ele integra:
 │   ├── 🧮 parser_xml.py   # Analisa UML/Draw.io (XML) e calcula LOC
 │   ├── 📐 parser_xsd.py   # Analisa XSD e gera fator de ajuste (EAF)
 │   └── 🧠 cocomo_model.py # Aplica o modelo COCOMO II
+```
+---
+
+## 🛠️ Como Executar
+
+### 1. Clone o projeto
+
+```bash
+git clone https://github.com/seu-usuario/estimatron.git
+cd estimatron
 
 
