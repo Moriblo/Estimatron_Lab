@@ -1,5 +1,16 @@
 # 🤖 Estimatron
 
+![Status](https://img.shields.io/badge/project-active-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Streamlit](https://img.shields.io/badge/built%20with-Streamlit-orange)
+![Python](https://img.shields.io/badge/python-3.10%2B-yellow)
+
+
+
+
+
+# 🤖 Estimatron
+
 > Estimatron é uma ferramenta inteligente para estimativas de esforço, tempo e custo em projetos de software, baseada em modelagem UML e arquivos técnicos XML/XSD, com aplicação automática do modelo COCOMO II.
 
 ---
@@ -21,5 +32,5 @@ Ele integra:
 
 ## 🗂️ Estrutura do Projeto
 
-estimatron/ ├── main.py # Interface Streamlit com entrada manual ou via config.json ├── config.json # Parâmetros de entrada opcional ├── arquivos/ # Diretório dos arquivos de entrada │ ├── modelo_uml.xml │ └── modelo.xsd ├── modules/ # Módulos funcionais do sistema │ ├── parser_xml.py # Analisa UML/Draw.io (XML) e calcula LOC │ ├── parser_xsd.py # Analisa XSD e gera fator de ajuste (EAF) │ └── cocomo_model.py # Aplica o modelo COCOMO II
+
 
