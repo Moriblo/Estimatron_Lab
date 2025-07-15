@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Item">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="valor" type="xs:float"/>
+      <xs:element name="quantidade" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Pedido">
+    <xs:sequence>
+      <xs:element name="numero" type="xs:int"/>
+      <xs:element name="itens" type="Item" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="pedido" type="Pedido"/>
+  <xs:element name="status" type="xs:string"/>
+</xs:schema>

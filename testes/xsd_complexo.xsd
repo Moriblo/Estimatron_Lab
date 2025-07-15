@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Vários tipos complexos para simular um sistema completo -->
+  <xs:complexType name="Endereco">
+    <xs:sequence>
+      <xs:element name="rua" type="xs:string"/>
+      <xs:element name="cidade" type="xs:string"/>
+      <xs:element name="cep" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Empresa">
+    <xs:sequence>
+      <xs:element name="nome" type="xs:string"/>
+      <xs:element name="cnpj" type="xs:string"/>
+      <xs:element name="endereco" type="Endereco"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Funcionario">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="nome" type="xs:string"/>
+      <xs:element name="cargo" type="xs:string"/>
+      <xs:element name="empresa" type="Empresa"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="funcionarios" type="Funcionario"/>
+  <xs:element name="departamento" type="xs:string"/>
+  <xs:element name="projeto" type="xs:string"/>
+  <xs:element name="cliente" type="xs:string"/>
+</xs:schema>

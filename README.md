@@ -30,14 +30,16 @@ Ele integra:
 🤖 estimatron/
 ├── 🎛️ main.py               # Interface Streamlit com entrada manual ou via config.json
 ├── ⚙️ config.json           # Parâmetros de entrada opcional
+├── 📦 requirements.txt      # Dependências principais para rodar o Estimatron
+├── 🧪 requirements-dev.txt  # Dependências extras para testes e qualidade de código
 ├── 📂 arquivos/             # Diretório dos arquivos de entrada reais
-│   ├── 📄 modelo_uml.xml
-│   └── 📄 modelo.xsd
+│   ├── 📄 modelo_uml.xml           # Modelo UML exportado do Draw.io
+│   └── 📄 modelo.xsd               # Schema técnico para estimativa de EAF
 ├── 🧩 modules/              # Módulos funcionais do sistema
-│   ├── 🧮 parser_xml.py     # Analisa UML/Draw.io (XML) e calcula LOC
-│   ├── 📐 parser_xsd.py     # Analisa XSD e gera fator de ajuste (EAF)
-│   └── 🧠 cocomo_model.py   # Aplica o modelo COCOMO II
-├── 🧪 testes/               # Testes unitários do sistema
+│   ├── 🧮 parser_xml.py           # Analisa UML/Draw.io (XML) e calcula LOC
+│   ├── 📐 parser_xsd.py           # Analisa XSD e gera fator de ajuste (EAF)
+│   └── 🧠 cocomo_model.py         # Aplica o modelo COCOMO II
+├── 🧪 testes/               # Testes unitários com dados sintéticos
 │   ├── 🧾 modelo_xml_curto.xml      # Modelo UML simplificado para teste de LOC
 │   ├── 🧾 xsd_simples.xsd           # Schema com baixa complexidade (<10)
 │   ├── 🧾 xsd_medio.xsd             # Schema com complexidade moderada (10–30)
@@ -48,6 +50,30 @@ Ele integra:
 │   └── ⚗️ test_cocomo.py            # Testes para estimativa de esforço/prazo/custo
 ```
 ---
+
+## 📦 Instalação de dependências
+
+O projeto Estimatron utiliza dois arquivos principais para organizar suas bibliotecas:
+
+- `requirements.txt` → **Dependências essenciais** para rodar o aplicativo via Streamlit
+- `requirements-dev.txt` → **Ferramentas adicionais** para testes automatizados e análise de qualidade
+
+Para instalar as dependências básicas, execute:
+
+```bash
+pip install -r requirements.txt
+```
+Se for contribuir com testes ou desenvolvimento interno, instale também:
+
+```bash
+pip install -r requirements-dev.txt
+```
+> 💡 **Dica:** Se estiver usando ambiente virtual (recomendado), ative antes de instalar:
+```bash
+python -m venv venv
+source venv/bin/activate      # Linux/macOS
+venv\Scripts\activate         # Windows
+```
 
 ## 🛠️ Como Executar
 
@@ -61,12 +87,6 @@ cd estimatron
 
 ```bash
 pip install streamlit xmlschema
-```
-> 💡 **Dica:** Se estiver usando ambiente virtual (recomendado), ative antes de instalar:
-```bash
-python -m venv venv
-source venv/bin/activate      # Linux/macOS
-venv\Scripts\activate         # Windows
 ```
 ### 3. Execute o aplicativo via Streamlit
 
