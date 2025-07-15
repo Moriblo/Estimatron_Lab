@@ -28,15 +28,24 @@ Ele integra:
 
 ```text
 🤖 estimatron/
-├── 🎛️ main.py             # Interface Streamlit com entrada manual ou via config.json
-├── ⚙️ config.json         # Parâmetros de entrada opcional
-├── 📂 arquivos/           # Diretório dos arquivos de entrada
+├── 🎛️ main.py               # Interface Streamlit com entrada manual ou via config.json
+├── ⚙️ config.json           # Parâmetros de entrada opcional
+├── 📂 arquivos/             # Diretório dos arquivos de entrada reais
 │   ├── 📄 modelo_uml.xml
 │   └── 📄 modelo.xsd
-├── 🧩 modules/            # Módulos funcionais do sistema
-│   ├── 🧮 parser_xml.py   # Analisa UML/Draw.io (XML) e calcula LOC
-│   ├── 📐 parser_xsd.py   # Analisa XSD e gera fator de ajuste (EAF)
-│   └── 🧠 cocomo_model.py # Aplica o modelo COCOMO II
+├── 🧩 modules/              # Módulos funcionais do sistema
+│   ├── 🧮 parser_xml.py     # Analisa UML/Draw.io (XML) e calcula LOC
+│   ├── 📐 parser_xsd.py     # Analisa XSD e gera fator de ajuste (EAF)
+│   └── 🧠 cocomo_model.py   # Aplica o modelo COCOMO II
+├── 🧪 testes/               # Testes unitários do sistema
+│   ├── 🧾 modelo_xml_curto.xml      # Modelo UML simplificado para teste de LOC
+│   ├── 🧾 xsd_simples.xsd           # Schema com baixa complexidade (<10)
+│   ├── 🧾 xsd_medio.xsd             # Schema com complexidade moderada (10–30)
+│   ├── 🧾 xsd_intermediario.xsd     # Schema com complexidade técnica (30–60)
+│   ├── 🧾 xsd_complexo.xsd          # Schema com alta complexidade (>60)
+│   ├── ⚗️ test_parser_xml.py        # Testes para LOC baseado em XML/UML
+│   ├── ⚗️ test_parser_xsd.py        # Testes para cálculo de EAF baseado em XSD
+│   └── ⚗️ test_cocomo.py            # Testes para estimativa de esforço/prazo/custo
 ```
 ---
 
