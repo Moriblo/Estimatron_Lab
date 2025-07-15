@@ -47,5 +47,33 @@ Ele integra:
 ```bash
 git clone https://github.com/seu-usuario/estimatron.git
 cd estimatron
+```
+### 2. Instale as dependências do projeto
+
+```bash
+pip install streamlit xmlschema
+```
+> 💡 **Dica:** Se estiver usando ambiente virtual (recomendado), ative antes de instalar:
+```bash
+python -m venv venv
+source venv/bin/activate      # Linux/macOS
+venv\Scripts\activate         # Windows
+```
+### 3. Execute o aplicativo via Streamlit
+
+```bash
+streamlit run main.py
+```
+### ✅ O que esperar na execução
+
+- 👤 Escolher o modo de entrada: manual ou via `config.json`
+- 📂 Carregar os arquivos necessários (`modelo_uml.xml`, `modelo.xsd`)
+- 📊 Visualizar estimativas de:
+  - 📏 LOC (Linhas de Código)
+  - ⚙️ EAF (Fator de Ajuste Técnico)
+  - 🧠 Esforço em pessoa-mês
+  - 📆 Prazo do projeto
+  - 💰 Custo total com base no salário informado
+
 
 
