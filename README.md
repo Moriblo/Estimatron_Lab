@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/project-active-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Streamlit](https://img.shields.io/badge/built%20with-Streamlit-orange)
-![Python](https://img.shields.io/badge/python-3.10%2B-yellow)
+[![Python](https://img.shields.io/badge/python-3.10%2B-yellow)](https://www.python.org/)
 
 > Estimatron é uma ferramenta inteligente para estimativas de esforço, tempo e custo em projetos de software, baseada em modelagem UML e arquivos técnicos XML/XSD, com aplicação automática do modelo COCOMO II.
 
