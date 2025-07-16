@@ -28,9 +28,14 @@ def validar_xml_drawio(xml_path):
         tree = ET.parse(xml_path)
         root = tree.getroot()
 
-        resultado["valido"] = True
         resultado["tipo_raiz"] = root.tag
         resultado["xmlns_detectado"] = "xmlns" in root.attrib or "xmlns:xlink" in root.attrib
+
+        # ✅ Verificação de estrutura mínima
+        if root.tag != "mxGraphModel":
+            resultado["valido"] = False
+        else:
+            resultado["valido"] = True
 
         celulas = root.findall(".//mxCell")
         resultado["num_celulas"] = len(celulas)
@@ -47,5 +52,3 @@ def validar_xml_drawio(xml_path):
         resultado["erro"] = f"Falha inesperada: {e}"
 
     return resultado
-
-

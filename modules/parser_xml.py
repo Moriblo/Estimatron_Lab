@@ -36,5 +36,6 @@ def extrair_loc_drawio(xml_path):
 
     return {
         "loc": len(blocos),
-        "blocos": blocos
+        "blocos": blocos,
+        "erro": None  # ← adiciona chave padronizada
     }

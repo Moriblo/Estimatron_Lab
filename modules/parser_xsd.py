@@ -41,10 +41,11 @@ def calcular_eaf_xsd(xsd_path):
         faixa = 1.15  # alta complexidade
 
     return {
-        "elementos_globais": len(globais),
-        "elementos_internos": len(internos),
-        "complex_types": len(tipos),
-        "total_elementos": total,
-        "eaf": faixa,
-        "erro": None
+    "arquivo": xsd_path,  # ← nova chave
+    "elementos_globais": len(globais),
+    "elementos_internos": len(internos),
+    "complex_types": len(tipos),
+    "total_elementos": total,
+    "eaf": faixa,
+    "erro": None
     }
