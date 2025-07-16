@@ -1,77 +1,50 @@
-# ==============================================================================
-# 📐 parser_xsd.py
-#
-# Descrição:
-#     Este módulo é responsável por interpretar esquemas XML definidos via XSD 
-#     (XML Schema Definition) e gerar um fator de ajuste técnico (EAF) com base 
-#     na complexidade estrutural. Ele utiliza a biblioteca xmlschema para carregar 
-#     o schema e avaliar características como número de elementos, tipos complexos 
-#     e profundidade hierárquica.
-#
-#     O EAF gerado pode ser usado como multiplicador no modelo COCOMO II, indicando
-#     o impacto da estrutura técnica do modelo sobre o esforço necessário.
-#
-# Autor: MOACYR ✍️
-# Copilot: Microsoft 🤖
-# ==============================================================================
+"""
+parser_xsd.py
+📂 Funções para analisar XSD e calcular fator de ajuste técnico (EAF)
 
-import xmlschema
+Processa o esquema XML gerado a partir do modelo UML, calcula complexidade
+baseada em elementos globais, internos e complexTypes.
 
-def calcular_eaf_xsd(caminho_arquivo):
-    """
-    Analisa um arquivo XSD e calcula o EAF (Fator de Ajuste de Complexidade),
-    além de retornar estatísticas detalhadas da estrutura do schema.
+Autor: MOACYR + Copilot
+Versão: 2.0
+"""
 
-    Retorna:
-        dict: informações sobre o arquivo, incluindo total de elementos,
-              módulos detectados e EAF atribuído.
-    """
+import xml.etree.ElementTree as ET
+
+def calcular_eaf_xsd(xsd_path):
     try:
-        schema = xmlschema.XMLSchema(caminho_arquivo)
-    except xmlschema.XMLSchemaException as erro:
-        print(f"❌ Erro ao carregar schema: {erro}")
+        tree = ET.parse(xsd_path)
+        root = tree.getroot()
+    except Exception as e:
         return {
-            "arquivo": caminho_arquivo,
             "elementos_globais": 0,
             "elementos_internos": 0,
-            "modulos": 0,
+            "complex_types": 0,
             "total_elementos": 0,
-            "eaf": 0.0
+            "eaf": 1.00,
+            "erro": f"Falha ao analisar XSD: {str(e)}"
         }
 
-    elementos_globais = len(schema.elements)
-    elementos_internos = 0
-    modulos = len(schema.types)
+    ns = {"xs": "http://www.w3.org/2001/XMLSchema"}
+    globais = root.findall(".//xs:element", ns)
+    internos = root.findall(".//xs:complexType//xs:element", ns)
+    tipos = root.findall(".//xs:complexType", ns)
 
-    # Percorre todos os tipos complexos e soma elementos internos
-    for tipo_nome, tipo_obj in schema.types.items():
-        try:
-            if tipo_obj.content:
-                internos = [
-                    c for c in tipo_obj.content.iter_elements()
-                    if getattr(c, "name", None)
-                ]
-                elementos_internos += len(internos)
-        except Exception as e:
-            print(f"⚠️ Erro ao processar tipo '{tipo_nome}': {e}")
+    total = len(globais) + len(internos) + len(tipos)
 
-    total_elementos = elementos_globais + elementos_internos
-
-    # Classifica o EAF conforme a complexidade estrutural
-    if total_elementos < 10:
-        eaf = 0.9
-    elif total_elementos < 30:
-        eaf = 1.0
-    elif total_elementos < 60:
-        eaf = 1.3
+    # 🧠 Regra de faixa EAF baseada na complexidade
+    if total < 5:
+        faixa = 0.85  # projeto simples
+    elif total <= 15:
+        faixa = 1.00  # média complexidade
     else:
-        eaf = 1.7
+        faixa = 1.15  # alta complexidade
 
     return {
-        "arquivo": caminho_arquivo,
-        "elementos_globais": elementos_globais,
-        "elementos_internos": elementos_internos,
-        "modulos": modulos,
-        "total_elementos": total_elementos,
-        "eaf": round(eaf, 2)
+        "elementos_globais": len(globais),
+        "elementos_internos": len(internos),
+        "complex_types": len(tipos),
+        "total_elementos": total,
+        "eaf": faixa,
+        "erro": None
     }

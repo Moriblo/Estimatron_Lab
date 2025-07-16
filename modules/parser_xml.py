@@ -1,37 +1,40 @@
 """
-📦 Estimatron - Extrator LOC para arquivos XML (modelo UML do draw.io)
+parser_xml.py
+📄 Funções para processar modelo UML exportado do draw.io (XML)
 
-Este módulo analisa o XML exportado via draw.io e estima o número de linhas
-de código (LOC) com base no número de blocos textuais identificados.
-
-Agora inclui validação estrutural e suporte a múltiplas versões do XML.
+Inclui extração de blocos textuais e cálculo de LOC.
+Retorna estrutura reutilizável para geração automática do XSD.
 
 Autor: MOACYR + Copilot
-Versão: 1.1
-Data: 2025-07-15
+Versão: 2.0
 """
 
 import xml.etree.ElementTree as ET
-from modules.validator_xml import validar_xml_drawio
 
-
-def extrair_loc_drawio(caminho_arquivo):
+def extrair_loc_drawio(xml_path):
     """
-    Analisa o arquivo XML e estima LOC com base em blocos visíveis.
-
+    Analisa um arquivo XML exportado do draw.io
     Retorna:
-        int: LOC estimado com base no número de blocos textuais.
+    - loc: quantidade de blocos com texto
+    - blocos: lista de strings (valores textuais dos blocos)
     """
-    # Valida antes de extrair
-    diagnostico = validar_xml_drawio(caminho_arquivo)
+    try:
+        tree = ET.parse(xml_path)
+        root = tree.getroot()
+    except Exception as e:
+        return {
+            "loc": 0,
+            "blocos": [],
+            "erro": f"Falha ao analisar XML: {str(e)}"
+        }
 
-    if not diagnostico["valido"]:
-        print(f"❌ XML inválido: {diagnostico['erro']}")
-        return 0
+    blocos = []
+    for cell in root.iter("mxCell"):
+        valor = cell.attrib.get("value", "").strip()
+        if valor:
+            blocos.append(valor)
 
-    if diagnostico["num_blocos_com_texto"] == 0:
-        print("⚠️ Nenhum bloco com texto foi detectado. LOC será zero.")
-        return 0
-
-    print(f"📄 Diagnóstico draw.io: {diagnostico['num_blocos_com_texto']} blocos textuais encontrados.")
-    return diagnostico["num_blocos_com_texto"]
+    return {
+        "loc": len(blocos),
+        "blocos": blocos
+    }

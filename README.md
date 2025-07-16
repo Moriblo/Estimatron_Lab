@@ -216,3 +216,62 @@ No terminal, dentro da pasta do projeto:
 ```bash
 streamlit run main.py
 ```
+
+---
+---
+
+## 🔄 Novo fluxo automático de entrada (a partir da versão 2.0)
+
+A partir da versão 2.0, o Estimatron foi simplificado para exigir apenas o **upload do arquivo XML**, exportado do draw.io. O sistema agora **gera automaticamente o XSD** com base nos blocos textuais encontrados no modelo UML.
+
+---
+
+### 📂 Entrada única
+
+- `modelo.xml`: diagrama UML exportado em formato XML (draw.io)
+
+> O arquivo `.xsd` é criado internamente pelo sistema — não é necessário fornecê-lo manualmente.
+
+---
+
+### ⚙️ Geração automática do XSD
+
+Após validar a estrutura do XML, o Estimatron:
+- Extrai os blocos com texto relevantes (ex: nome de classes, entidades)
+- Cria um esquema XSD simples, compatível com padrão XML Schema
+- Usa esse arquivo para calcular a **complexidade técnica (EAF)**
+
+---
+
+### 📊 Diagnóstico técnico exibido antes da estimativa
+
+O sistema mostra:
+
+#### 🧪 XML
+- Validade da estrutura
+- Tipo de raiz detectada
+- Número de células (`mxCell`)
+- Quantidade de blocos com texto
+
+#### 🧪 XSD (gerado automaticamente)
+- Elementos globais e internos
+- Número de `complexTypes`
+- Total de elementos detectados
+- Faixa de EAF atribuída
+
+---
+
+### 📐 Estimativa gerada
+
+Depois de clicar em **🚀 Gerar estimativa**, são exibidos:
+
+- 🔢 LOC estimado
+- ⚙️ EAF calculado
+- 🧠 Esforço em pessoa-mês
+- 📆 Prazo estimado
+- 💸 Custo total do projeto
+
+---
+
+Com esse novo fluxo, o Estimatron se torna ainda mais **fácil de usar**, eliminando etapas manuais e proporcionando uma análise técnica automática a partir de uma única entrada XML. Ideal para ambientes ágeis, consultorias, PMOs e times de análise técnica.
+
