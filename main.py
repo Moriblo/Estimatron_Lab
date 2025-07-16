@@ -8,7 +8,7 @@ Exibe diagnósticos técnicos e realiza estimativa completa.
 Remove os arquivos temporários ao final do processo.
 
 Autor: MOACYR + Copilot
-Versão: 2.1
+Versão: 2.2
 Data: 2025-07-15
 """
 
@@ -31,15 +31,12 @@ def gerar_xsd_basico(blocos, xsd_saida):
 
 # 🧼 Função para remover arquivos temporários
 def limpar_arquivos_temp():
-    # Lista dos arquivos temporários gerados durante o fluxo
     arquivos_temp = ["temp_modelo.xml", "temp_modelo.xsd"]
-
     for arquivo in arquivos_temp:
         if os.path.exists(arquivo):
             try:
-                os.remove(arquivo)  # Tenta remover o arquivo do sistema
+                os.remove(arquivo)
             except Exception as e:
-                # Se falhar, exibe uma mensagem no console (pode logar também)
                 print(f"[⚠️] Não foi possível remover '{arquivo}': {e}")
 
 # 🎨 Interface do Streamlit
@@ -67,15 +64,16 @@ if xml_file:
     if diagnostico["erro"]:
         st.error(f"❌ Erro detectado: {diagnostico['erro']}")
 
-    if diagnostico["valido"] and diagnostico["num_blocos_com_texto"] > 0:
+    # ✅ Definindo se dados estão prontos
+    dados_validos = diagnostico["valido"] and diagnostico["num_blocos_com_texto"] > 0
+    loc, eaf = 0, 1.00  # Defaults para segurança
+
+    if dados_validos:
         resultado = extrair_loc_drawio("temp_modelo.xml")
         loc = resultado["loc"]
         blocos = resultado["blocos"]
 
-        # 🔧 Geração do XSD
         gerar_xsd_basico(blocos, "temp_modelo.xsd")
-
-        # 📊 Diagnóstico do XSD
         eaf_info = calcular_eaf_xsd("temp_modelo.xsd")
         eaf = eaf_info["eaf"]
 
@@ -86,11 +84,13 @@ if xml_file:
         st.write(f"🧩 Módulos (complexTypes): **{eaf_info['complex_types']}**")
         st.write(f"🧮 Total de elementos: **{eaf_info['total_elementos']}**")
         st.write(f"📊 Faixa EAF atribuída: **{eaf}**")
+    else:
+        st.warning("⚠️ Arquivo XML não possui estrutura ou blocos textuais suficientes para estimativa.")
 
-        # 🚀 Estimativa
-        if st.button("🚀 Gerar estimativa"):
+    # 🚀 Botão visível — execução condicionada
+    if st.button("🚀 Gerar estimativa"):
+        if dados_validos:
             esforco, prazo, custo = calcular_cocomo(loc, eaf, salario)
-
             st.success("✅ Estimativa concluída!")
             st.write(f"🔢 LOC estimado: **{loc}**")
             st.write(f"⚙️ Fator de ajuste EAF: **{eaf}**")
@@ -98,5 +98,6 @@ if xml_file:
             st.write(f"📆 Prazo estimado: **{prazo} meses**")
             st.write(f"💸 Custo total: **R${custo:.2f}**")
 
-            # 🧼 Limpeza automática ao final
             limpar_arquivos_temp()
+        else:
+            st.error("❌ Estimativa não gerada. Verifique a estrutura do XML e os blocos detectados.")
