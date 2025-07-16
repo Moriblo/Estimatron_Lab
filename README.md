@@ -114,4 +114,25 @@ streamlit run main.py
 | `b`       | Expoente de escala              | Representa o crescimento não linear conforme a escala     |
 | `c`       | Fator de dimensionamento de prazo | Ajusta o tempo com base no esforço estimado             |
 
+## 📌 Fórmulas envolvidas
+
+- **Esforço (PM):**  
+  $$ PM = a \cdot (KLOC)^b \cdot EAF $$
+
+- **Prazo (TDEV):**  
+  $$ TDEV = c \cdot (PM)^{0.35} $$
+
+- **Custo total:**  
+  $$ Custo = PM \cdot salário\_mensal $$
+
+## 🔢 Valores típicos para projetos padrão
+
+Estes parâmetros são comumente utilizados no modelo COCOMO II:
+
+```text
+a = 2.94  # Produtividade base
+b = 0.91  # Expoente de escala
+c = 3.67  # Fator de prazo (dimensionamento temporal)
+
+Esses valores foram calibrados a partir de estudos sobre centenas de projetos reais e podem ser ajustados conforme o perfil da equipe, domínio técnico ou grau de maturidade.
 
