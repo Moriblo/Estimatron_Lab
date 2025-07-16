@@ -1,0 +1,5 @@
+# 🧪 Ferramentas úteis para testes, verificação e qualidade de código
+pytest>=7.0             # Framework de testes unitários
+pytest-cov>=4.1.0       # Cobertura dos testes
+flake8>=6.0.0           # Linting de código Python
+mypy>=1.8.0             # Verificação estática de tipos (opcional)

@@ -104,5 +104,14 @@ streamlit run main.py
   - 📆 Prazo do projeto
   - 💰 Custo total com base no salário informado
 
+---
+
+## 🧮 Significado dos parâmetros COCOMO II
+
+| Parâmetro | Papel no cálculo                | Interpretação prática                                     |
+|-----------|---------------------------------|-----------------------------------------------------------|
+| `a`       | Constante de produtividade      | Base de esforço por mil linhas de código (KLOC)           |
+| `b`       | Expoente de escala              | Representa o crescimento não linear conforme a escala     |
+| `c`       | Fator de dimensionamento de prazo | Ajusta o tempo com base no esforço estimado             |
 
 

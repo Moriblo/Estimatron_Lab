@@ -1,20 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="Item">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="Sistema" type="SistemaType"/>
+
+  <xs:complexType name="SistemaType">
     <xs:sequence>
-      <xs:element name="id" type="xs:string"/>
-      <xs:element name="valor" type="xs:float"/>
-      <xs:element name="quantidade" type="xs:int"/>
+      <xs:element name="ModuloFinanceiro" type="ModuloFinanceiroType"/>
+      <xs:element name="ModuloRH" type="ModuloRHType"/>
+      <xs:element name="ModuloTI" type="ModuloTIType"/>
+      <xs:element name="ModuloVendas" type="ModuloVendasType"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Pedido">
+  <!-- Cada módulo tem ~10 elementos internos -->
+  <xs:complexType name="ModuloFinanceiroType">
     <xs:sequence>
-      <xs:element name="numero" type="xs:int"/>
-      <xs:element name="itens" type="Item" maxOccurs="unbounded"/>
+      <xs:element name="ContasPagar" type="xs:string"/>
+      <xs:element name="ContasReceber" type="xs:string"/>
+      <xs:element name="Lancamentos" type="xs:string"/>
+      <xs:element name="Balanco" type="xs:string"/>
+      <xs:element name="Impostos" type="xs:string"/>
+      <xs:element name="Orcamento" type="xs:string"/>
+      <xs:element name="FluxoCaixa" type="xs:string"/>
+      <xs:element name="Auditoria" type="xs:string"/>
+      <xs:element name="Faturas" type="xs:string"/>
+      <xs:element name="Relatorios" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:element name="pedido" type="Pedido"/>
-  <xs:element name="status" type="xs:string"/>
+  <xs:complexType name="ModuloRHType">
+    <xs:sequence>
+      <xs:element name="Colaboradores" type="xs:string"/>
+      <xs:element name="FolhaPagamento" type="xs:string"/>
+      <xs:element name="Beneficios" type="xs:string"/>
+      <xs:element name="Ferias" type="xs:string"/>
+      <xs:element name="Ponto" type="xs:string"/>
+      <xs:element name="Contratos" type="xs:string"/>
+      <xs:element name="Treinamentos" type="xs:string"/>
+      <xs:element name="Avaliacoes" type="xs:string"/>
+      <xs:element name="Recrutamento" type="xs:string"/>
+      <xs:element name="Organograma" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModuloTIType">
+    <xs:sequence>
+      <xs:element name="Infraestrutura" type="xs:string"/>
+      <xs:element name="AtivosTI" type="xs:string"/>
+      <xs:element name="Chamados" type="xs:string"/>
+      <xs:element name="Usuarios" type="xs:string"/>
+      <xs:element name="Servidores" type="xs:string"/>
+      <xs:element name="Rede" type="xs:string"/>
+      <xs:element name="Licencas" type="xs:string"/>
+      <xs:element name="Backups" type="xs:string"/>
+      <xs:element name="Seguranca" type="xs:string"/>
+      <xs:element name="DocumentacaoTI" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ModuloVendasType">
+    <xs:sequence>
+      <xs:element name="Clientes" type="xs:string"/>
+      <xs:element name="Produtos" type="xs:string"/>
+      <xs:element name="Pedidos" type="xs:string"/>
+      <xs:element name="Pagamentos" type="xs:string"/>
+      <xs:element name="Entrega" type="xs:string"/>
+      <xs:element name="Comissoes" type="xs:string"/>
+      <xs:element name="Campanhas" type="xs:string"/>
+      <xs:element name="Descontos" type="xs:string"/>
+      <xs:element name="FaturasVendas" type="xs:string"/>
+      <xs:element name="RelatoriosVendas" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>

@@ -1,33 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <!-- Vários tipos complexos para simular um sistema completo -->
-  <xs:complexType name="Endereco">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="Corporativo" type="CorporativoType"/>
+
+  <xs:complexType name="CorporativoType">
     <xs:sequence>
-      <xs:element name="rua" type="xs:string"/>
-      <xs:element name="cidade" type="xs:string"/>
-      <xs:element name="cep" type="xs:string"/>
+      <xs:element name="Financeiro" type="FinanceiroType"/>
+      <xs:element name="RH" type="RHType"/>
+      <xs:element name="TI" type="TIType"/>
+      <xs:element name="Vendas" type="VendasType"/>
+      <xs:element name="Marketing" type="MarketingType"/>
+      <xs:element name="Logistica" type="LogisticaType"/>
+      <xs:element name="Juridico" type="JuridicoType"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Empresa">
+  <!-- Cada módulo define ~10 a 12 elementos -->
+  <xs:complexType name="FinanceiroType">
     <xs:sequence>
-      <xs:element name="nome" type="xs:string"/>
-      <xs:element name="cnpj" type="xs:string"/>
-      <xs:element name="endereco" type="Endereco"/>
+      <xs:element name="Conta" type="xs:string"/>
+      <xs:element name="Boleto" type="xs:string"/>
+      <xs:element name="Pix" type="xs:string"/>
+      <xs:element name="Transferencia" type="xs:string"/>
+      <xs:element name="Investimentos" type="xs:string"/>
+      <xs:element name="Receita" type="xs:string"/>
+      <xs:element name="Despesa" type="xs:string"/>
+      <xs:element name="Conciliacao" type="xs:string"/>
+      <xs:element name="Imposto" type="xs:string"/>
+      <xs:element name="Balanco" type="xs:string"/>
+      <xs:element name="Fatura" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Funcionario">
+  <xs:complexType name="RHType">
     <xs:sequence>
-      <xs:element name="id" type="xs:int"/>
-      <xs:element name="nome" type="xs:string"/>
-      <xs:element name="cargo" type="xs:string"/>
-      <xs:element name="empresa" type="Empresa"/>
+      <xs:element name="Funcionario" type="xs:string"/>
+      <xs:element name="Admissao" type="xs:string"/>
+      <xs:element name="Demissao" type="xs:string"/>
+      <xs:element name="Beneficio" type="xs:string"/>
+      <xs:element name="PlanoSaude" type="xs:string"/>
+      <xs:element name="ValeTransporte" type="xs:string"/>
+      <xs:element name="Ponto" type="xs:string"/>
+      <xs:element name="Ferias" type="xs:string"/>
+      <xs:element name="Treinamento" type="xs:string"/>
+      <xs:element name="Promocao" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:element name="funcionarios" type="Funcionario"/>
-  <xs:element name="departamento" type="xs:string"/>
-  <xs:element name="projeto" type="xs:string"/>
-  <xs:element name="cliente" type="xs:string"/>
+  <xs:complexType name="TIType">
+    <xs:sequence>
+      <xs:element name="Usuario" type="xs:string"/>
+      <xs:element name="Senha" type="xs:string"/>
+      <xs:element name="Perfil" type="xs:string"/>
+      <xs:element name="Computador" type="xs:string"/>
+      <xs:element name="Notebook" type="xs:string"/>
+      <xs:element name="Servidor" type="xs:string"/>
+      <xs:element name="Backup" type="xs:string"/>
+      <xs:element name="Antivirus" type="xs:string"/>
+      <xs:element name="Firewall" type="xs:string"/>
+      <xs:element name="Rede" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="VendasType">
+    <xs:sequence>
+      <xs:element name="Produto" type="xs:string"/>
+      <xs:element name="Preco" type="xs:decimal"/>
+      <xs:element name="Quantidade" type="xs:int"/>
+      <xs:element name="Pedido" type="xs:string"/>
+      <xs:element name="Entrega" type="xs:string"/>
+      <xs:element name="Cliente" type="xs:string"/>
+      <xs:element name="Pagamento" type="xs:string"/>
+      <xs:element name="Cartao" type="xs:string"/>
+      <xs:element name="Desconto" type="xs:string"/>
+      <xs:element name="Relatorio" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MarketingType">
+    <xs:sequence>
+      <xs:element name="Campanha" type="xs:string"/>
+      <xs:element name="Canal" type="xs:string"/>
+      <xs:element name="Custo" type="xs:decimal"/>
+      <xs:element name="ROI" type="xs:decimal"/>
+      <xs:element name="Segmentacao" type="xs:string"/>
+      <xs:element name="Pesquisa" type="xs:string"/>
+      <xs:element name="Concorrente" type="xs:string"/>
+      <xs:element name="Criativo" type="xs:string"/>
+      <xs:element name="Anuncio" type="xs:string"/>
+      <xs:element name="Lead" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="LogisticaType">
+    <xs:sequence>
+      <xs:element name="Origem" type="xs:string"/>
+      <xs:element name="Destino" type="xs:string"/>
+      <xs:element name="Rota" type="xs:string"/>
+      <xs:element name="Frete" type="xs:decimal"/>
+      <xs:element name="Transportadora" type="xs:string"/>
+      <xs:element name="Carga" type="xs:string"/>
+      <xs:element name="Volume" type="xs:int"/>
+      <xs:element name="Prazo" type="xs:string"/>
+      <xs:element name="NotaFiscal" type="xs:string"/>
+      <xs:element name="Rastreamento" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="JuridicoType">
+    <xs:sequence>
+      <xs:element name="Contrato" type="xs:string"/>
+      <xs:element name="PrazoContrato" type="xs:string"/>
+      <xs:element name="Advogado" type="xs:string"/>
+      <xs:element name="Processo" type="xs:string"/>
+      <xs:element name="Forum" type="xs:string"/>
+      <xs:element name="Custas" type="xs:decimal"/>
+      <xs:element name="Sentenca" type="xs:string"/>
+      <xs:element name="Recurso" type="xs:string"/>
+      <xs:element name="Acordo" type="xs:string"/>
+      <xs:element name="Parecer" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>

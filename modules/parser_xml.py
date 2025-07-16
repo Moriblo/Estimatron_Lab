@@ -1,47 +1,37 @@
-# ==============================================================================
-# 📄 parser_xml.py
-#
-# Descrição:
-#     Este módulo realiza a análise de arquivos XML exportados do Draw.io contendo
-#     diagramas UML. A função principal extrai elementos como blocos, conectores ou
-#     nós relevantes para estimar a quantidade total de linhas de código (LOC).
-#
-#     A lógica é baseada na contagem de elementos estruturais (por exemplo, retângulos)
-#     que representariam classes, entidades ou componentes no projeto, atribuindo
-#     estimativas médias de LOC por elemento.
-#
-# Autor: MOACYR ✍️
-# Copilot: Microsoft 🤖
-# ==============================================================================
+"""
+📦 Estimatron - Extrator LOC para arquivos XML (modelo UML do draw.io)
+
+Este módulo analisa o XML exportado via draw.io e estima o número de linhas
+de código (LOC) com base no número de blocos textuais identificados.
+
+Agora inclui validação estrutural e suporte a múltiplas versões do XML.
+
+Autor: MOACYR + Copilot
+Versão: 1.1
+Data: 2025-07-15
+"""
 
 import xml.etree.ElementTree as ET
+from modules.validator_xml import validar_xml_drawio
 
-def extrair_loc_drawio(caminho_arquivo_xml):
+
+def extrair_loc_drawio(caminho_arquivo):
     """
-    Lê um arquivo XML do Draw.io contendo o modelo UML e estima o LOC total.
-
-    Parâmetros:
-        caminho_arquivo_xml (str): Caminho para o arquivo XML exportado do Draw.io.
+    Analisa o arquivo XML e estima LOC com base em blocos visíveis.
 
     Retorna:
-        int: Estimativa de linhas de código com base no número de elementos encontrados.
+        int: LOC estimado com base no número de blocos textuais.
     """
+    # Valida antes de extrair
+    diagnostico = validar_xml_drawio(caminho_arquivo)
 
-    # 📂 Carrega e interpreta o XML via ElementTree
-    arvore = ET.parse(caminho_arquivo_xml)
-    raiz = arvore.getroot()
+    if not diagnostico["valido"]:
+        print(f"❌ XML inválido: {diagnostico['erro']}")
+        return 0
 
-    # 🔍 Busca todos os elementos 'mxCell' representando figuras UML no Draw.io
-    elementos = raiz.findall(".//mxCell")
+    if diagnostico["num_blocos_com_texto"] == 0:
+        print("⚠️ Nenhum bloco com texto foi detectado. LOC será zero.")
+        return 0
 
-    # 🧮 Filtra e conta apenas aqueles que têm 'value' (ignorando conectores e metadados)
-    elementos_com_valor = [el for el in elementos if el.get("value")]
-
-    # 📏 Define uma estimativa média de LOC por elemento detectado
-    loc_por_elemento = 20  # Pode ser calibrado conforme o domínio
-
-    # 📊 Cálculo total estimado
-    loc_total = len(elementos_com_valor) * loc_por_elemento
-
-    return loc_total
-
+    print(f"📄 Diagnóstico draw.io: {diagnostico['num_blocos_com_texto']} blocos textuais encontrados.")
+    return diagnostico["num_blocos_com_texto"]

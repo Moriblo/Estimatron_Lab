@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="Pessoa">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+  <xs:element name="Cadastro" type="CadastroType"/>
+
+  <xs:complexType name="CadastroType">
     <xs:sequence>
-      <xs:element name="nome" type="xs:string"/>
-      <xs:element name="idade" type="xs:int"/>
+      <xs:element name="Nome" type="xs:string"/>
+      <xs:element name="CPF" type="xs:string"/>
+      <xs:element name="Email" type="xs:string"/>
+      <xs:element name="Telefone" type="xs:string"/>
+      <xs:element name="Endereco" type="EnderecoType"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:element name="cliente" type="Pessoa"/>
-  <xs:element name="produto" type="xs:string"/>
+  <xs:complexType name="EnderecoType">
+    <xs:sequence>
+      <xs:element name="Rua" type="xs:string"/>
+      <xs:element name="Numero" type="xs:int"/>
+      <xs:element name="Complemento" type="xs:string"/>
+      <xs:element name="Bairro" type="xs:string"/>
+      <xs:element name="Cidade" type="xs:string"/>
+      <xs:element name="Estado" type="xs:string"/>
+      <xs:element name="CEP" type="xs:string"/>
+      <xs:element name="Pais" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
+

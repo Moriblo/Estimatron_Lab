@@ -17,37 +17,61 @@
 
 import xmlschema
 
-def calcular_eaf_xsd(caminho_arquivo_xsd):
+def calcular_eaf_xsd(caminho_arquivo):
     """
-    Analisa a estrutura do arquivo XSD e calcula um fator de ajuste (EAF).
-
-    Parâmetros:
-        caminho_arquivo_xsd (str): Caminho para o arquivo XSD.
+    Analisa um arquivo XSD e calcula o EAF (Fator de Ajuste de Complexidade),
+    além de retornar estatísticas detalhadas da estrutura do schema.
 
     Retorna:
-        float: Fator técnico estimado entre 0.8 e 2.0 (EAF).
+        dict: informações sobre o arquivo, incluindo total de elementos,
+              módulos detectados e EAF atribuído.
     """
+    try:
+        schema = xmlschema.XMLSchema(caminho_arquivo)
+    except xmlschema.XMLSchemaException as erro:
+        print(f"❌ Erro ao carregar schema: {erro}")
+        return {
+            "arquivo": caminho_arquivo,
+            "elementos_globais": 0,
+            "elementos_internos": 0,
+            "modulos": 0,
+            "total_elementos": 0,
+            "eaf": 0.0
+        }
 
-    # 📂 Carrega o schema XSD
-    schema = xmlschema.XMLSchema(caminho_arquivo_xsd)
+    elementos_globais = len(schema.elements)
+    elementos_internos = 0
+    modulos = len(schema.types)
 
-    # 🧮 Contabiliza o número de elementos e tipos complexos
-    num_elementos = len(schema.elements)
-    num_tipos = len(schema.types)
+    # Percorre todos os tipos complexos e soma elementos internos
+    for tipo_nome, tipo_obj in schema.types.items():
+        try:
+            if tipo_obj.content:
+                internos = [
+                    c for c in tipo_obj.content.iter_elements()
+                    if getattr(c, "name", None)
+                ]
+                elementos_internos += len(internos)
+        except Exception as e:
+            print(f"⚠️ Erro ao processar tipo '{tipo_nome}': {e}")
 
-    # 📈 Heurística simples para estimar complexidade técnica
-    complexidade = num_elementos + num_tipos
+    total_elementos = elementos_globais + elementos_internos
 
-    # ⚖️ Converte complexidade em fator EAF
-    # Mínimo 0.8 (pouco complexo), máximo 2.0 (muito complexo)
-    if complexidade < 10:
+    # Classifica o EAF conforme a complexidade estrutural
+    if total_elementos < 10:
         eaf = 0.9
-    elif complexidade < 30:
+    elif total_elementos < 30:
         eaf = 1.0
-    elif complexidade < 60:
+    elif total_elementos < 60:
         eaf = 1.3
     else:
         eaf = 1.7
 
-    return round(eaf, 2)
-
+    return {
+        "arquivo": caminho_arquivo,
+        "elementos_globais": elementos_globais,
+        "elementos_internos": elementos_internos,
+        "modulos": modulos,
+        "total_elementos": total_elementos,
+        "eaf": round(eaf, 2)
+    }
