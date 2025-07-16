@@ -1,4 +1,5 @@
 """
+validator_xml.py
 🔍 Validador estrutural de arquivos XML exportados do draw.io
 
 Suporta múltiplas versões e variações de estrutura geradas pela ferramenta,
@@ -6,15 +7,15 @@ identificando células gráficas e validando presença de blocos textuais úteis
 para estimativa LOC.
 
 Autor: MOACYR + Copilot
-Versão: 1.1
-Data: 2025-07-15
+Versão: 1.2
+Data: 2025-07-16
 """
 
 import xml.etree.ElementTree as ET
 
-def validar_xml_drawio(caminho_arquivo):
+def validar_xml_drawio(xml_path):
     resultado = {
-        "arquivo": caminho_arquivo,
+        "arquivo": xml_path,
         "valido": False,
         "erro": None,
         "num_celulas": 0,
@@ -24,14 +25,13 @@ def validar_xml_drawio(caminho_arquivo):
     }
 
     try:
-        tree = ET.parse(caminho_arquivo)
+        tree = ET.parse(xml_path)
         root = tree.getroot()
 
         resultado["valido"] = True
         resultado["tipo_raiz"] = root.tag
         resultado["xmlns_detectado"] = "xmlns" in root.attrib or "xmlns:xlink" in root.attrib
 
-        # 🧠 Flexível: encontra qualquer 'mxCell' em profundidade
         celulas = root.findall(".//mxCell")
         resultado["num_celulas"] = len(celulas)
 
@@ -47,3 +47,5 @@ def validar_xml_drawio(caminho_arquivo):
         resultado["erro"] = f"Falha inesperada: {e}"
 
     return resultado
+
+

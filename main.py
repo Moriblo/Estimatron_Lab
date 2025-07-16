@@ -100,6 +100,3 @@ if xml_file:
 
             # 🧼 Limpeza automática ao final
             limpar_arquivos_temp()
-
-        else:
-            st.error("❌ Caminho para XML ou XSD inválido no config.json.")
