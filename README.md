@@ -136,3 +136,83 @@ c = 3.67  # Fator de prazo (dimensionamento temporal)
 
 Esses valores foram calibrados a partir de estudos sobre centenas de projetos reais e podem ser ajustados conforme o perfil da equipe, domínio técnico ou grau de maturidade.
 
+---
+
+## 💡 O que esperar da interface
+
+### 🔘 Escolha do modo de entrada
+
+- **Manual:** Upload direto dos arquivos XML/XSD + salário mensal
+- **Arquivo `config.json`:** Upload de um JSON com os caminhos e valores
+
+---
+
+### 📂 Upload dos arquivos necessários
+
+- `modelo.xml`: exportado do draw.io contendo o diagrama UML
+- `modelo.xsd`: representando o esquema estrutural dos dados
+
+---
+
+### 🧪 Diagnóstico técnico automático
+
+Antes da estimativa, o sistema exibe informações dos arquivos analisados:
+
+#### 📄 XML
+- Validade estrutural
+- Tipo da raiz detectada (`mxGraphModel`, `diagram`, etc.)
+- Total de células (`mxCell`)
+- Blocos com texto úteis para LOC
+
+#### 📂 XSD
+- Quantidade de elementos globais
+- Elementos internos e estruturas aninhadas
+- Número de `complexTypes`
+- Faixa de EAF atribuída com base na complexidade
+
+---
+
+### 📐 Estimativa baseada no modelo COCOMO II
+
+Após clicar em **🚀 Gerar estimativa**, os seguintes dados são calculados e exibidos:
+
+- 🔢 LOC estimado
+- ⚙️ Fator de ajuste de complexidade (EAF)
+- 🧠 Esforço em pessoa-mês
+- 📆 Prazo estimado em meses
+- 💸 Custo total do projeto
+
+---
+
+### 📁 Exemplo de arquivo `config.json` para entrada automática
+
+```json
+{
+  "xml_path": "entradas/modelo.xml",
+  "xsd_path": "entradas/modelo.xsd",
+  "salario_mensal": 12000
+}
+
+> Coloque esse arquivo em `config/config.json` ou selecione via interface.
+
+O **Estimatron** foi projetado para oferecer estimativas **rápidas**, **confiáveis** e **auditáveis**, com validação técnica das entradas antes do processamento.  
+Ideal para **analistas de requisitos**, **arquitetos de software** e **engenheiros de estimativas**.
+
+## 🚀 Como executar o Estimatron (`main.py`)
+
+O Estimatron é uma aplicação baseada em Streamlit que realiza estimativas de esforço, prazo e custo de projetos de software utilizando o modelo COCOMO II, com entrada de arquivos UML/XML (draw.io) e XSD.
+
+### ✅ Pré-requisitos
+
+- Python 3.10 ou superior
+- Ambiente virtual ativado (`venv`)
+- Pacotes instalados via `requirements.txt`
+- Arquivos dos módulos e testes no diretório padrão do projeto
+
+### ▶️ Execução
+
+No terminal, dentro da pasta do projeto:
+
+```bash
+streamlit run main.py
+```
