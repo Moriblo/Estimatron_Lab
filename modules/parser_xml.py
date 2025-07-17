@@ -1,4 +1,4 @@
-"""
+""" ############################################################################
 parser_xml.py
 📄 Funções para processar modelo UML exportado do draw.io (XML)
 
@@ -7,7 +7,7 @@ Retorna estrutura reutilizável para geração automática do XSD.
 
 Autor: MOACYR + Copilot
 Versão: 2.0
-"""
+################################################################################ """
 
 import xml.etree.ElementTree as ET
 

@@ -1,4 +1,4 @@
-"""
+""" ############################################################################
 parser_xsd.py
 📂 Funções para analisar XSD e calcular fator de ajuste técnico (EAF)
 
@@ -7,7 +7,7 @@ baseada em elementos globais, internos e complexTypes.
 
 Autor: MOACYR + Copilot
 Versão: 2.0
-"""
+################################################################################ """
 
 import xml.etree.ElementTree as ET
 

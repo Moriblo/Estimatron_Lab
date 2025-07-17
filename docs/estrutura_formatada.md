@@ -2,6 +2,7 @@
 
 ├── 📄 CHANGELOG.md # Log de Features e Releases
 ├── 📄 README.md
+├── 📄 README_Inicial.md
 ├── 📚 docs/ # Documentação técnica e estrutura gerada
 │   └── 📄 estrutura_formatada.md
 ├── ⚗️ estimatron_gera_estrutarvore.py # Geração da estrutura de pastas
