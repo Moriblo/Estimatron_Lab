@@ -65,6 +65,23 @@ Ele integra:
 ```
 ---
 
+## 📘 Documentação
+
+> Preparado para geração automática de documentação, a partir do uso de docstrings estilo PEP 257 no código. Escolheu-se pela adoção do MkDocs, abaoixo segue comparativo.
+
+### ⚔️ Comparativo entre Sphinx e MkDocs
+
+| 🔧 Recurso              | 🐍 Sphinx                      | 📘 MkDocs                                      |
+|------------------------|-------------------------------|------------------------------------------------|
+| Base de arquivos        | `.rst` (mais complexo)         | `.md` (Markdown simples)                       |
+| Integração com código   | Sim (via `autodoc`)            | Parcial (com plug-ins)                         |
+| Facilidade de uso       | Média                          | Alta                                           |
+| Visualização            | Técnica / clássica             | Moderna / responsiva                           |
+| Ideal para              | Bibliotecas / APIs             | Repositórios / Documentação geral              |
+| Integração com GitHub   | Boa (via GitHub Pages + CI)    | Excelente (com `mkdocs gh-deploy` plug-and-play) |
+
+---
+
 ## 📦 Instalação de dependências
 
 O projeto Estimatron utiliza dois arquivos principais para organizar suas bibliotecas:
