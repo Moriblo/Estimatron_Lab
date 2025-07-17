@@ -1,4 +1,4 @@
-"""
+""" ###########################################################################
 main.py
 🎯 Estimatron - Interface Principal via Streamlit
 
@@ -10,7 +10,7 @@ Remove os arquivos temporários ao final do processo.
 Autor: MOACYR + Copilot
 Versão: 2.2
 Data: 2025-07-15
-"""
+############################################################################### """
 
 import streamlit as st
 import os
