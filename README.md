@@ -26,6 +26,18 @@ Ele integra:
 
 ---
 
+## 📦 Arquitetura (Módulos Funcionais do Estimatron)
+
+| 📁 Módulo               | 🧩 Função Principal                      | 🔍 Propósito                                                                 |
+|------------------------|------------------------------------------|------------------------------------------------------------------------------|
+| `main.py`              | `gerar_xsd_basico` <br> `limpar_arquivos_temp` | Orquestra a execução e geração do XSD base do projeto                       |
+| `modules.parser_xml`   | `extrair_loc_drawio`                     | Extrai métricas de LOC diretamente a partir do XML gerado pelo UML          |
+| `modules.parser_xsd`   | `calcular_eaf_xsd`                       | Interpreta o XSD para estimar os componentes de FP (EE, SE, CE, ALI, AIE)   |
+| `modules.cocomo_model` | `calcular_cocomo`                        | Aplica os parâmetros de COCOMO II e gera os percentuais de esforço e cronograma |
+| `modules.validator_xml`| `validar_xml_drawio`                     | Faz validações estruturais no XML gerado a partir do Draw.io                |
+
+---
+
 ## 🗂️ Estrutura de Diretórios
 
 ```text
