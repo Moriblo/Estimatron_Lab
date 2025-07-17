@@ -3,8 +3,11 @@
 [![Status](https://img.shields.io/badge/project-active-brightgreen)](https://en.wikipedia.org/wiki/Software_development_process)
 [![License](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 [![Streamlit](https://img.shields.io/badge/built%20with-Streamlit-orange)](https://streamlit.io/)
+[![XML Schema](https://img.shields.io/badge/XML%20Schema-W3C%202001-blue.svg?logo=xml&logoColor=white)](http://www.w3.org/2001/XMLSchema)
 [![Python](https://img.shields.io/badge/python-3.10%2B-yellow)](https://www.python.org/downloads/release/python-3100/)
 [![Cobertura 100%](https://img.shields.io/badge/coverage-100%25-brightgreen)](htmlcov/index.html)
+
+http://www.w3.org/2001/XMLSchema
 
 
 > Estimatron é uma ferramenta inteligente para estimativas de esforço, tempo e custo em projetos de software, baseada em modelagem UML e arquivos técnicos XML/XSD, com aplicação automática do modelo COCOMO II.
