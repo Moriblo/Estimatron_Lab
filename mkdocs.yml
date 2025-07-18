@@ -1,0 +1,53 @@
+site_name: Estimatron
+site_description: Estimativas inteligentes de esforço e cronograma com base em UML, FP e COCOMO II
+site_author: MOACYR
+site_url: https://github.com/moriblo/estimatron
+repo_url: https://github.com/moriblo/estimatron
+repo_name: moriblo/estimatron
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: default
+      primary: blue
+      accent: cyan
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+    - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      locale: pt_BR
+  - mermaid2:
+      arguments:
+        theme: neutral
+        securityLevel: loose
+
+nav:
+  - 🏠 Início: index.md
+  - 📦 Estrutura: estrutura_formatada.md
+  - 🧠 Módulos:
+      - parser_xml: modules/parser_xml.md
+      - parser_xsd: modules/parser_xsd.md
+      - cocomo_model: modules/cocomo_model.md
+      - validator_xml: modules/validator_xml.md
+  # - 🧪 Testes: docs/testes.md   ← desativado temporariamente
+  - 📚 Referências: referencias.md
+

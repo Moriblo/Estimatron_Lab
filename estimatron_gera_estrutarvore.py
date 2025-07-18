@@ -1,7 +1,7 @@
 """
 ╭────────────────────────────────────────────────────────────╮
 │                                                            │
-│   Estimatron — Gerador Visual de Estrutura de Diretórios  │
+│   Estimatron — Gerador Visual de Estrutura de Diretórios   │
 │                                                            │
 │   Percorre todo o projeto e gera uma árvore estilizada     │
 │   com pseudografias, emojis por tipo, e comentários.       │
@@ -125,7 +125,7 @@ def listar(caminho, prefixo='', saida=[], ignorados=[], permitir_ocultos=set()):
 def gerar_arquivo():
     """
     Executa a geração automática do arquivo Markdown da estrutura do projeto.
-    Cria docs/estrutura_formatada.md com árvore visual estilizada.
+    Cria docs/estrutura_de_pastas.md com árvore visual estilizada.
     """
     os.makedirs('docs', exist_ok=True)
     ignorados = ler_gitignore()
@@ -134,7 +134,7 @@ def gerar_arquivo():
     estrutura = ["## 📁 Estrutura de Pastas do Projeto Estimatron\n"]
     estrutura += listar('.', ignorados=ignorados, permitir_ocultos=permitir_ocultos)
 
-    destino = os.path.join('docs', 'estrutura_formatada.md')
+    destino = os.path.join('docs', 'estrutura_de_pastas.md')
     with open(destino, 'w', encoding='utf-8') as f:
         f.write('\n'.join(estrutura))
 

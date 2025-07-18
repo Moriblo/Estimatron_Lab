@@ -1,3 +1,5 @@
 # 🌐 Dependências principais para rodar o Estimatron
-streamlit>=1.30.0       # Interface interativa baseada em web
-xmlschema>=2.0.0        # Validação e leitura de arquivos .xsd
+
+streamlit>=1.30.0       # Interface web interativa com componentes visuais
+xmlschema>=2.0.0        # Validação e leitura de arquivos XSD
+

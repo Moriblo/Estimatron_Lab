@@ -1,22 +1,31 @@
-""" ############################################################################
-parser_xml.py
-📄 Funções para processar modelo UML exportado do draw.io (XML)
+###############################################################################
+# parser_xml.py
+# 📄 Funções para processar modelo UML exportado do draw.io (XML)
+#
+# Inclui extração de blocos textuais e cálculo de LOC.
+# Retorna estrutura reutilizável para geração automática do XSD.
+#
+# Autor: MOACYR + Copilot
+# Versão: 2.1
+# Data: 2025-07-15
+###############################################################################
 
-Inclui extração de blocos textuais e cálculo de LOC.
-Retorna estrutura reutilizável para geração automática do XSD.
-
-Autor: MOACYR + Copilot
-Versão: 2.0
-################################################################################ """
-
+from typing import List, Dict, Union
 import xml.etree.ElementTree as ET
 
-def extrair_loc_drawio(xml_path):
+def extrair_loc_drawio(xml_path: str) -> Dict[str, Union[int, List[str], str, None]]:
     """
-    Analisa um arquivo XML exportado do draw.io
+    Analisa um arquivo XML exportado do draw.io e extrai blocos textuais que
+    representam candidatos a contagem de linhas de código (LOC).
+
+    Parâmetros:
+        xml_path (str): Caminho do arquivo XML a ser processado.
+
     Retorna:
-    - loc: quantidade de blocos com texto
-    - blocos: lista de strings (valores textuais dos blocos)
+        dict: Um dicionário com as seguintes chaves:
+            - 'loc' (int): Total de blocos textuais detectados.
+            - 'blocos' (List[str]): Lista contendo os textos dos blocos.
+            - 'erro' (str ou None): Mensagem de erro, caso a análise falhe.
     """
     try:
         tree = ET.parse(xml_path)
@@ -37,5 +46,6 @@ def extrair_loc_drawio(xml_path):
     return {
         "loc": len(blocos),
         "blocos": blocos,
-        "erro": None  # ← adiciona chave padronizada
+        "erro": None
     }
+
