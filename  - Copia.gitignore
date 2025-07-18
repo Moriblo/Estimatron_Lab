@@ -1,0 +1,57 @@
+# 🔒 Ambientes virtuais e variáveis locais
+venv/
+.env
+
+# 📦 Arquivos de automação de comandos de terminal
+*.bat
+
+# ⚙️ Compilados e caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.egg-info/
+*.egg
+*.dll
+*.a
+*.out
+
+# 🧪 Testes e cobertura
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.cache/
+
+# 📦 Build e distribuição
+build/
+dist/
+*.log
+*.db
+*.sqlite3
+
+# 🧹 Arquivos temporários
+*.swp
+*~
+*.bak
+
+# 🎨 Arquivos gerados ou exportados
+*.drawio
+*.drawio.xml
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.gif
+
+# 🧾 Arquivos de estrutura técnica automática
+# docs/estrutura_formatada.md
+docs/estimatron_estruturadepastas_*.txt
+
+# 🛠️ Configurações locais de IDE
+.vscode/
+.idea/
+*.code-workspace
+
+# 🔍 Arquivos de exemplo ou testes internos
+config.json
