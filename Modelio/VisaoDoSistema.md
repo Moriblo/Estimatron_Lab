@@ -45,6 +45,7 @@ SoluçãoProposta: [Resumo da solução]
 StakeholdersPrincipais: [Lista dos interessados chave]  
 VersãoDocumento: 1.0  
 OrigemProjeto: [Nome do sistema ou demanda]
+```
 ---
 ### 🔹 3. Processo BPMN: `VisaoDoSistema_BPMN_Process`
 
