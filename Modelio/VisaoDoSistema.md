@@ -62,7 +62,7 @@ OrigemProjeto: [Nome do sistema ou demanda]
 ## 📝 Orientações para o Analista
 
 - Não é necessário adicionar novos elementos: **apenas preencher os existentes**
-- Utilize o campo `Description` da classe `Template_ContextoProjeto` para **descrever o escopo do sistema**
+- Utilize o campo `Descrição` da classe `Template_ContextoProjeto` para **descrever o escopo do sistema**
 - Complete o diagrama **BPMN** com os dados obtidos no **briefing inicial**
 - Mantenha **rastreabilidade** entre o fluxo institucional e a `Activity VisaoDoSistema_Activity`
 - A documentação final pode servir como **insumo para as próximas etapas**:
