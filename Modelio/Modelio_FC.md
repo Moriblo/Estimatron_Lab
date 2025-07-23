@@ -50,7 +50,7 @@ Activity: UseCases_Activity
 
 ## ✨ Orientações Adicionais para o Analista
 
-Toda UseCase deve conter:
+### Toda UseCase deve conter:
 
 Nome claro
 
@@ -60,7 +60,7 @@ Atores primários associados
 
 Classes envolvidas (AR / ALI)
 
-Os templates orientadores (como Template_UC000) devem conter campos:
+### Os templates orientadores (como Template_UC000) devem conter campos:
 
 Tipo PF
 
