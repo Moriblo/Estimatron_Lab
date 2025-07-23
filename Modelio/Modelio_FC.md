@@ -43,3 +43,40 @@ Activity: UseCases_Activity
 ├─ UseCase: UC002_VisualizarAtendimentos (Tipo: CE)
 │   └─ Actor: Cliente
 │   └─ Classe relacionada: Atendimento (<<Entidade>> → AR)
+
+🔎 Cada linha acima pode ser exportada via XMI e lida por um parser automatizado para geração de relatório PF.
+```
+---
+
+## ✨ Orientações Adicionais para o Analista
+
+Toda UseCase deve conter:
+
+Nome claro
+
+Estereótipo indicando tipo PF (<<Entrada>>, <<Consulta>>)
+
+Atores primários associados
+
+Classes envolvidas (AR / ALI)
+
+Os templates orientadores (como Template_UC000) devem conter campos:
+
+Tipo PF
+
+Complexidade esperada
+
+Justificativa e critérios
+
+## 📊 Proposta de Automação Futuro
+Você poderá criar ou conectar uma ferramenta que:
+
+Leia o XMI exportado pelo Modelio
+
+Identifique os elementos modelados com estereótipos específicos
+
+Classifique os itens conforme regras de contagem PF
+
+Gere relatório .CSV ou .XLS com estimativa total de FC
+
+Inclua links reversos para auditoria e rastreamento
